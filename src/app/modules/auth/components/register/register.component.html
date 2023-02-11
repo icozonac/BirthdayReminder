@@ -1,0 +1,66 @@
+<form class="form" (submit)="formSubmit($event)" [@enter1]>
+  <h1>Register</h1>
+
+  <div class="sectionFL">
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="name" [formControl]="name" required />
+      <mat-error *ngIf="name.invalid">{{ getErrorMessageName() }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="name" [formControl]="lastName" required />
+      <mat-error *ngIf="name.invalid">{{
+        getErrorMessageLastName()
+      }}</mat-error>
+    </mat-form-field>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input matInput placeholder="example@mail" [formControl]="email" required />
+    <mat-error *ngIf="email.invalid">{{ getErrorMessageEmail() }}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      [type]="hide ? 'password' : 'text'"
+      [formControl]="password"
+      required
+    />
+    <mat-error *ngIf="password.invalid">{{ getErrorMessagePass() }}</mat-error>
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Confirm Password</mat-label>
+    <input
+      matInput
+      [type]="hide ? 'password' : 'text'"
+      [formControl]="confirmPassword"
+      required
+    />
+    <mat-error *ngIf="confirmPassword.invalid">{{
+      getErrorMessagePassConfirm()
+    }}</mat-error>
+  </mat-form-field>
+  <button
+    mat-flat-button
+    color="primary"
+    [disabled]="registerForm.invalid"
+    (click)="registerSubmited()"
+  >
+    Register
+  </button>
+  <div>
+    <strong>Have already an account? </strong>
+    <a routerLink="/auth/login" routerLinkActive="active"> Login here</a>
+  </div>
+</form>

@@ -1,0 +1,56 @@
+.form {
+  font-weight: bold;
+  color: #000000;
+  width: 400px;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+
+  backdrop-filter: saturate(90%) blur(5px);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.mat-form-field-appearance-fill {
+  width: 320px;
+  margin-bottom: 10px;
+}
+.checkbox,
+strong {
+  font-weight: 400;
+}
+mat-label {
+  color: black !important;
+}
+h1 {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  height: 60px;
+  padding-top: 10px;
+  color: #ffc800;
+  width: 100%;
+  text-align: center;
+}
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 320px;
+  margin-bottom: 30px;
+}
+button {
+  padding: 5px 30px;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  color: #521bac;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}

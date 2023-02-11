@@ -1,0 +1,31 @@
+<div class="container">
+  <h1 [@enter1]>Birthday Reminder</h1>
+
+  <div [ngSwitch]="animation" [@enter2] class="center-children-horizontally">
+    <img
+      src="/assets/img.png"
+      *ngSwitchCase="'rubberBand'"
+      [@rubberBand]="{
+        value: animationState,
+        params: { duration: 1000, delay: 0 }
+      }"
+    />
+  </div>
+
+  <div [@enter3] (@enter3.done)="animationState = !animationState">
+    <button
+      (@hueButton.done)="hueBtnState = !hueBtnState"
+      [@hueButton]="{
+        value: hueBtnState,
+        params: { duration: 1000, delay: 0 }
+      }"
+      mat-raised-button
+      color="primary"
+      class="lg-btn"
+      routerLink="/auth/login"
+      routerLinkActive="active"
+    >
+      Let's Go
+    </button>
+  </div>
+</div>

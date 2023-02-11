@@ -1,0 +1,51 @@
+<form class="form" (submit)="formSubmit($event)" [@enter1]>
+  <h1>Login</h1>
+  <div class="container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your email</mat-label>
+      <input
+        matInput
+        placeholder="email@example.com"
+        [formControl]="email"
+        required
+      />
+      <mat-error *ngIf="email.invalid">{{ getErrorMessageEmail() }}</mat-error>
+    </mat-form-field>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input
+      matInput
+      [type]="hide ? 'password' : 'text'"
+      [formControl]="password"
+      required
+    />
+    <mat-error *ngIf="password.invalid">{{ getErrorMessagePass() }}</mat-error>
+
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+  </mat-form-field>
+  <div class="section">
+    <mat-checkbox class="checkbox">Remember me</mat-checkbox>
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="authForm.invalid"
+      (click)="loginSubmited()"
+    >
+      Login
+    </button>
+  </div>
+
+  <div>
+    <strong>Not a member? </strong>
+    <a routerLink="/auth/register" routerLinkActive="active">Signup</a>
+  </div>
+</form>

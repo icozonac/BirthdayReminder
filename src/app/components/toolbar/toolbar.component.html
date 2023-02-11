@@ -1,0 +1,39 @@
+<p>
+  <mat-toolbar color="primary">
+    <button mat-icon-button color="basic">
+      <mat-icon
+        class="home-icon"
+        aria-label="Example icon button with a filter list icon"
+        routerLink="/"
+        routerLinkActive="active"
+      >
+        home</mat-icon
+      >
+    </button>
+    <span class="title">Birthday Reminder</span>
+    <span class="example-spacer"></span>
+    <div *ngIf="isLoggedIn == true; else logOut">
+      <button
+        mat-raised-button
+        color="primary"
+        class="lg-btn"
+        (click)="logout()"
+        routerLink=""
+        routerLinkActive="active"
+      >
+        Log Out
+      </button>
+    </div>
+    <ng-template #logOut>
+      <button
+        mat-raised-button
+        color="primary"
+        class="lg-btn"
+        routerLink="/auth/login"
+        routerLinkActive="active"
+      >
+        Login
+      </button>
+    </ng-template>
+  </mat-toolbar>
+</p>
