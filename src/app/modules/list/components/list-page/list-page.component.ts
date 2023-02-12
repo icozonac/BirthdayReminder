@@ -54,7 +54,7 @@ export class ListPageComponent implements OnInit {
     phone: new FormControl('', [
       Validators.required,
       Validators.minLength(9),
-      Validators.maxLength(10),
+      Validators.maxLength(9),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
     city: new FormControl('', [Validators.required]),

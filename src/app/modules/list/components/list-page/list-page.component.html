@@ -158,6 +158,7 @@
   </div>
 </div>
 <div class="cards-container">
+  <p *ngIf="friends.length === 0">Nu ai nici un prieten adaugat</p>
   <app-card
     *ngFor="let friend of friends"
     [friend]="friend"
