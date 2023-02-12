@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   checked = false;
   animation = 'rubberBand';
   animationState = false;
+  error = false;
 
   authForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -60,9 +61,13 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(body).subscribe({
       next: (res) => {
         this.router.navigateByUrl('/list');
+        localStorage.setItem('token', res.token);
       },
       error: (err: RegisterErrorResponce) => {
-        console.log(err.error);
+        this.error = true;
+        setTimeout(() => {
+          this.error = false;
+        }, 2000);
       },
     });
   }

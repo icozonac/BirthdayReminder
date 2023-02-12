@@ -13,7 +13,11 @@ export class AuthService {
   private isLoggedSubject = new BehaviorSubject<boolean>(false);
   isLogged$ = this.isLoggedSubject.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    if (localStorage.getItem('token')) {
+      this.isLoggedSubject.next(true);
+    }
+  }
 
   registerUser(body: RegisterBody): Observable<RegisterResponse> {
     return this.http
@@ -27,6 +31,7 @@ export class AuthService {
   }
 
   logoutUser() {
+    localStorage.removeItem('token');
     this.isLoggedSubject.next(false);
   }
 }

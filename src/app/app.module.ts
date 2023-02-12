@@ -11,6 +11,13 @@ import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MainComponent } from './components/main/main.component';
 
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { FormsModule } from '@angular/forms';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+
+registerLocaleData(en);
+
 @NgModule({
   declarations: [AppComponent, ToolbarComponent, MainComponent],
   imports: [
@@ -19,8 +26,10 @@ import { MainComponent } from './components/main/main.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     CommonsModule,
+    FormsModule,
+    NzLayoutModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

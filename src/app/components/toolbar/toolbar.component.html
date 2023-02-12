@@ -1,4 +1,4 @@
-<p>
+<p #toolbar>
   <mat-toolbar color="primary">
     <button mat-icon-button color="basic">
       <mat-icon
@@ -13,6 +13,15 @@
     <span class="title">Birthday Reminder</span>
     <span class="example-spacer"></span>
     <div *ngIf="isLoggedIn == true; else logOut">
+      <button
+        mat-raised-button
+        color="primary"
+        class="list"
+        routerLink="/list"
+        routerLinkActive="active"
+      >
+        My List
+      </button>
       <button
         mat-raised-button
         color="primary"

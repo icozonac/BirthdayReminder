@@ -1,1 +1,18 @@
-<p>card works!</p>
+<nz-card
+  style="width: 300px"
+  nzTitle="{{ friend.name.toUpperCase() + ' ' + friend.surname.toUpperCase() }}"
+  [nzExtra]="extraTemplate"
+>
+  <p>
+    <b>Birthday: {{ friend.birthday }}</b>
+  </p>
+  <p>Email: {{ friend.email }}</p>
+  <p>Phone: {{ 40 + friend.phone }}</p>
+  <p>City: {{ friend.city }}</p>
+  <p></p>
+</nz-card>
+<ng-template #extraTemplate>
+  <button nz-button nzType="primary" nzDanger (click)="onDelete(friend.id)">
+    Delete
+  </button>
+</ng-template>

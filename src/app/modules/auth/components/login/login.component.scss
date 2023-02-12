@@ -13,17 +13,21 @@
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
+
 .mat-form-field-appearance-fill {
   width: 320px;
   margin-bottom: 10px;
 }
+
 .checkbox,
 strong {
   font-weight: 400;
 }
+
 mat-label {
   color: black !important;
 }
+
 h1 {
   font-size: 35px;
   font-weight: bold;
@@ -34,6 +38,7 @@ h1 {
   width: 100%;
   text-align: center;
 }
+
 .section {
   display: flex;
   justify-content: space-between;
@@ -42,6 +47,7 @@ h1 {
   width: 320px;
   margin-bottom: 30px;
 }
+
 button {
   padding: 5px 30px;
   font-size: 18px;
@@ -53,4 +59,10 @@ a {
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
+}
+
+nz-alert {
+  position: absolute;
+  top: 64px;
+  left: 0;
 }

@@ -1,1 +1,167 @@
-<p>list-page works!</p>
+<div class="search-bar-container">
+  <div>
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+      <input
+        class="search-bar"
+        type="text"
+        nz-input
+        [(ngModel)]="searchText"
+        placeholder="Search card"
+      />
+    </nz-input-group>
+    <ng-template #suffixIconButton>
+      <button nz-button nzType="primary" nzSearch (click)="applyFilter()">
+        <span nz-icon nzType="search"></span>
+      </button>
+    </ng-template>
+  </div>
+  <!-- select dropdown -->
+  <nz-select
+    [(ngModel)]="selectedSortCol"
+    [compareWith]="compareFn"
+    (ngModelChange)="sortChange($event)"
+    nzAllowClear
+    nzPlaceHolder="Choose"
+  >
+    <nz-option
+      *ngFor="let option of sortCols"
+      [nzValue]="option"
+      [nzLabel]="option.label"
+    ></nz-option>
+  </nz-select>
+  <div>
+    <button class="btn-create" nz-button [nzType]="'primary'" (click)="open()">
+      <span>Create</span>
+    </button>
+    <nz-drawer
+      [nzBodyStyle]="{ overflow: 'auto' }"
+      [nzMaskClosable]="false"
+      [nzWidth]="600"
+      [nzVisible]="visible"
+      nzTitle="Create a card"
+      [nzFooter]="footerTpl"
+      (nzOnClose)="close()"
+    >
+      <form nz-form *nzDrawerContent>
+        <p>First name</p>
+        <mat-form-field appearance="fill">
+          <input
+            type="tel"
+            matInput
+            placeholder="Enter first name"
+            [formControl]="name"
+            required
+          />
+          <mat-error *ngIf="name.invalid">{{
+            getErrorMessageName()
+          }}</mat-error>
+        </mat-form-field>
+
+        <p>Last name</p>
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            placeholder="Enter last name"
+            [formControl]="surname"
+            required
+          />
+          <mat-error *ngIf="surname.invalid">{{
+            getErrorMessageSurname()
+          }}</mat-error>
+        </mat-form-field>
+
+        <p>Phone number</p>
+        <mat-form-field class="example-full-width">
+          <mat-label>Telephone</mat-label>
+          <span matPrefix>+40 &nbsp;</span>
+          <input
+            type="tel"
+            matInput
+            placeholder="754352343"
+            [formControl]="phone"
+            required
+          />
+          <mat-error *ngIf="phone.invalid">{{
+            getErrorMessagePhone()
+          }}</mat-error>
+        </mat-form-field>
+
+        <p>Email</p>
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            placeholder="Enter email"
+            [formControl]="email"
+            required
+          />
+          <mat-error *ngIf="email.invalid">{{
+            getErrorMessageEmail()
+          }}</mat-error>
+        </mat-form-field>
+
+        <p>City</p>
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            placeholder="Enter city"
+            [formControl]="city"
+            required
+          />
+          <mat-error *ngIf="city.invalid">{{
+            getErrorMessageCity()
+          }}</mat-error>
+        </mat-form-field>
+
+        <p>Birthday</p>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input
+            class="date-input"
+            matInput
+            [matDatepicker]="picker"
+            [formControl]="birthday"
+            required
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="birthday.invalid">{{
+            getErrorMessageBirthday()
+          }}</mat-error>
+        </mat-form-field>
+      </form>
+
+      <ng-template #footerTpl>
+        <div style="float: right">
+          <button
+            nz-button
+            nzType="primary"
+            style="margin-right: 8px"
+            (click)="close()"
+          >
+            Close
+          </button>
+          <button
+            nz-button
+            nzType="primary"
+            (click)="submited()"
+            [disabled]="CardForm.invalid"
+          >
+            Create
+          </button>
+        </div>
+      </ng-template>
+    </nz-drawer>
+  </div>
+</div>
+<div class="cards-container">
+  <app-card
+    *ngFor="let friend of friends"
+    [friend]="friend"
+    (deleteFriend)="deleteFriend($event)"
+  >
+  </app-card>
+</div>

@@ -49,3 +49,9 @@
     <a routerLink="/auth/register" routerLinkActive="active">Signup</a>
   </div>
 </form>
+
+<nz-alert
+  nzType="error"
+  [hidden]="!error"
+  nzMessage="Incorrect password or email."
+></nz-alert>
