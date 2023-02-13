@@ -1,1 +1,1 @@
-birthday-reminder-sandy.vercel.app
+link: birthday-reminder-sandy.vercel.app
