@@ -90,7 +90,7 @@ export class RegisterComponent implements OnInit {
 
     this.authService.registerUser(body).subscribe({
       next: (res) => {
-        this.router.navigateByUrl('/list');
+        this.router.navigate(['/list']);
       },
       error: (err: RegisterErrorResponce) => {
         console.log(err.error);

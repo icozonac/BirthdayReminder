@@ -22,12 +22,22 @@ export class AuthService {
   registerUser(body: RegisterBody): Observable<RegisterResponse> {
     return this.http
       .post<RegisterResponse>(this.serverUrl + '/register', body)
-      .pipe(tap((res) => this.isLoggedSubject.next(true)));
+      .pipe(
+        tap((res) => {
+          this.isLoggedSubject.next(true);
+          localStorage.setItem('token', res.token);
+        })
+      );
   }
   loginUser(body: LoginBody): Observable<RegisterResponse> {
     return this.http
       .post<RegisterResponse>(this.serverUrl + '/login', body)
-      .pipe(tap((res) => this.isLoggedSubject.next(true)));
+      .pipe(
+        tap((res) => {
+          this.isLoggedSubject.next(true);
+          localStorage.setItem('token', res.token);
+        })
+      );
   }
 
   logoutUser() {

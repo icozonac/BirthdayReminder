@@ -61,7 +61,6 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(body).subscribe({
       next: (res) => {
         this.router.navigateByUrl('/list');
-        localStorage.setItem('token', res.token);
       },
       error: (err: RegisterErrorResponce) => {
         this.error = true;
