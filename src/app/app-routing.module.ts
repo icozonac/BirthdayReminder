@@ -9,14 +9,12 @@ const routes: Routes = [
   {
     path: '',
     component: MainComponent,
-
   },
   {
     path: 'auth',
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
-      canActivate: [AuthGuard],
-    
+    canActivate: [AuthGuard],
   },
   {
     path: 'list',

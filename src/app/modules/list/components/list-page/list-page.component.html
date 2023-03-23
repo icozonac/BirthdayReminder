@@ -1,6 +1,6 @@
 <div class="search-bar-container">
   <div>
-    <nz-input-group nzSearch >
+    <nz-input-group nzSearch>
       <input
         class="search-bar"
         type="text"
@@ -10,13 +10,8 @@
         (keyup)="applyFilter()"
       />
     </nz-input-group>
-    <!-- <ng-template #suffixIconButton>
-      <button nz-button nzType="primary" nzSearch (click)="applyFilter()">
-        <span nz-icon nzType="search"></span>
-      </button>
-    </ng-template> -->
   </div>
-  <!-- select dropdown -->
+
   <nz-select
     [(ngModel)]="selectedSortCol"
     [compareWith]="compareFn"
@@ -159,7 +154,7 @@
   </div>
 </div>
 <div class="cards-container">
-  <p *ngIf="friends.length === 0">Nu ai nici un prieten adaugat</p>
+  <p *ngIf="friends.length === 0">Not found friends</p>
   <app-card
     *ngFor="let friend of friends"
     [friend]="friend"

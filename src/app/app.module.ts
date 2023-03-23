@@ -29,7 +29,7 @@ registerLocaleData(en);
     FormsModule,
     NzLayoutModule,
   ],
-  providers: [AuthService, ],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
