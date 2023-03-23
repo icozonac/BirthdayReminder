@@ -5,6 +5,11 @@
   overflow: auto;
   padding: 5rem 0;
 
-  background-image: url("/assets/bg.jpg");
-  background-size: cover;
+  background: rgb(116, 36, 170);
+  background: linear-gradient(
+    90deg,
+    rgb(110, 30, 163) 0%,
+    rgb(243, 58, 58) 50%,
+    rgb(248, 160, 38) 100%
+  );
 }

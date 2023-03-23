@@ -1,19 +1,20 @@
 <div class="search-bar-container">
   <div>
-    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+    <nz-input-group nzSearch >
       <input
         class="search-bar"
         type="text"
         nz-input
         [(ngModel)]="searchText"
         placeholder="Search card"
+        (keyup)="applyFilter()"
       />
     </nz-input-group>
-    <ng-template #suffixIconButton>
+    <!-- <ng-template #suffixIconButton>
       <button nz-button nzType="primary" nzSearch (click)="applyFilter()">
         <span nz-icon nzType="search"></span>
       </button>
-    </ng-template>
+    </ng-template> -->
   </div>
   <!-- select dropdown -->
   <nz-select

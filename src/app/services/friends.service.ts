@@ -34,9 +34,12 @@ export class FriendsService {
   }
 
   applyFilter(filterText: string): void {
-    const filteredItems = this.friends.filter((friend) =>
-      friend.name.toLowerCase().includes(filterText.toLowerCase())
+    const filteredItems = this.friends.filter(
+      (friend) =>
+        friend.name.toLowerCase().includes(filterText.toLowerCase()) ||
+        friend.surname.toLowerCase().includes(filterText.toLowerCase())
     );
+
     this.friendsUpdated.next(filteredItems);
   }
 
@@ -69,14 +72,15 @@ export class FriendsService {
 
       case 'birthday':
         sortedItems = this.friends.sort((a, b) => {
-          if (a.birthday < b.birthday) {
+          if (a.birthday.split('.')[2] < b.birthday.split('.')[2]) {
             return -1;
           }
-          if (a.birthday > b.birthday) {
+          if (a.birthday.split('.')[2] > b.birthday.split('.')[2]) {
             return 1;
           }
           return 0;
         });
+
         break;
 
       default:
