@@ -3,7 +3,7 @@
 <div
   class="container"
   #container
-  [ngStyle]="{ overflow: onRouteChange() ? 'auto' : 'hidden' }"
+  [ngStyle]="{ overflow: showScroll ? 'auto' : 'hidden' }"
 >
   <router-outlet></router-outlet>
 </div>

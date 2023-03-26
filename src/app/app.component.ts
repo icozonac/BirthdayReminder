@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,12 +6,19 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   @ViewChild('container') container!: ElementRef;
 
   title = 'Reminder';
+  showScroll = false;
 
   constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.router.events.subscribe(() => {
+      this.onRouteChange();
+    });
+  }
 
   onToolbarSet(toolbar: ElementRef) {
     const offsetHeight = toolbar.nativeElement.offsetHeight;
@@ -21,7 +28,6 @@ export class AppComponent {
   }
 
   onRouteChange() {
-    if (this.router.url === '/list') return true;
-    else return false;
+    this.showScroll = this.router.url === '/list';
   }
 }
