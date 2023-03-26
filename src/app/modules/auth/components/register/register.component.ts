@@ -82,7 +82,6 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    console.log('Submitted');
     const body: RegisterBody = {
       email: this.email.value,
       password: this.password.value,

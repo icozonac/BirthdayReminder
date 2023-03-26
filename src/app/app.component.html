@@ -1,5 +1,9 @@
 <app-toolbar (toolbarRef)="onToolbarSet($event)"></app-toolbar>
 
-<div class="container" #container>
+<div
+  class="container"
+  #container
+  [ngStyle]="{ overflow: onRouteChange() ? 'auto' : 'hidden' }"
+>
   <router-outlet></router-outlet>
 </div>

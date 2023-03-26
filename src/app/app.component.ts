@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,17 @@ export class AppComponent {
 
   title = 'Reminder';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   onToolbarSet(toolbar: ElementRef) {
     const offsetHeight = toolbar.nativeElement.offsetHeight;
     this.container.nativeElement.style.height = `calc(100vh - ${
       offsetHeight - 1
     }px)`;
+  }
+
+  onRouteChange() {
+    if (this.router.url === '/list') return true;
+    else return false;
   }
 }
